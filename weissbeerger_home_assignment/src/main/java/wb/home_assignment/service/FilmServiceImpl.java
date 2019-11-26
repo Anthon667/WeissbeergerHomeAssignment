@@ -36,9 +36,11 @@ public class FilmServiceImpl implements FilmService {
 
 	public void createXMLFile(Film film) {
 		XmlMapper xmlMapper = new XmlMapper();
+		File folder = new File("D://" + "OMDB_Films");
+		if(!folder.exists()) folder.mkdir();
 		try {
 			if (film.getImdbID() == null)
-				xmlMapper.writeValue(new File("D:\\" + File.separator + "FilmNull.xml"), null);
+				xmlMapper.writeValue(new File("D://OMDB_Films" + File.separator + "FilmNull.xml"), null);
 			else
 				xmlMapper.writeValue(new File("D://OMDB_Films" + File.separator + film.getTitle() + ".xml"), film);
 
